@@ -4,9 +4,9 @@ from FPLF.FPB import FPB
 from backbone.EfficientNetB4 import EfficientNetB4, switch_layers
 
 class FPLF(nn.Module):
-    def __init__(self, ):
+    def __init__(self, cfg_path):
         super(FPLF, self).__init__()
-        self.backbone = EfficientNetB4(pretrained=True, num_classes=1)
+        self.backbone = EfficientNetB4(pretrained=True, num_classes=1, cfg_path=cfg_path)
         self.fpbList = nn.Sequential(
             FPB(dim=32, h=80, w=41, fp32fft=True),
             FPB(dim=32, h=80, w=41, fp32fft=True),
